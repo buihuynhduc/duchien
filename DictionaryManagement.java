@@ -5,10 +5,14 @@ package btl;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Writer;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
@@ -104,7 +108,19 @@ public void dictionaryrepair(Dictionary d)
     Word word=new Word(wordtarget,wordexplain);
     d.list.add(word);
         System.out.println("da sua");
+        
     }
+    Collections.sort(d.list, new Comparator<Word>()
+                {
+                    @Override
+                public int compare(Word word1, Word word2)
+                    {
+                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
+                   }
+               }); 
+         
+        
+ 
     
     
     
@@ -123,6 +139,14 @@ public void dictionaryadd(Dictionary d)
     Word word=new Word(wordtarget,wordexplain);
     d.list.add(word);
     System.out.println("da them tu moi");
+     Collections.sort(d.list, new Comparator<Word>()
+                {
+                    @Override
+                public int compare(Word word1, Word word2)
+                    {
+                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
+                   }
+               }); 
     
     
 }
@@ -152,10 +176,35 @@ public void dictionaryDelete(Dictionary d)
     
     
 }
-
-
-
+public void dictionaryExportToFile(Dictionary d) throws IOException 
+{ Collections.sort(d.list, new Comparator<Word>()
+                {
+                    @Override
+                public int compare(Word word1, Word word2)
+                    {
+                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
+                   }
+               }); 
+   
+    try{
+         FileWriter file =new FileWriter("dictionaries.txt");
+        for(Word word : d.list)
+        {
+            file.write(word.getwordtarget()+" "+word.getwordexplain()+"\r\n");
+        }
+        file.close();
     }
+    catch(Exception e)
+            {
+                System.err.print(e);
+            }
+   
+    
+}
+ }
+
+
+    
   
     
  
