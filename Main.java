@@ -71,13 +71,13 @@ public class Main {
             case 2:
             {
                 dm.dictionaryDelete(d);
-                dm.insertFromFile(d);
+                dm.dictionaryExportToFile(d);
                 break;
             }
             case 3:
             {
                 dm.dictionaryrepair(d);
-                dm.insertFromFile(d);
+                dm.dictionaryExportToFile(d);
                 break;
             }
         }
