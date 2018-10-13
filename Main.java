@@ -32,9 +32,11 @@ public class Main {
         System.out.println("2.tra cuu theo goi y");
         System.out.println("3.them sua xoa cac tu");
 
+
         System.out.println("4.thoat");
     Scanner input=new Scanner(System.in);
          int n;
+         String key;
      do
      {System.out.print("nhap lua chon cua ban : ");
      
@@ -57,32 +59,45 @@ public class Main {
                
                break;
            }
-           case 3:
-           {
-               System.out.println("1.them tu");
-        System.out.println("2.xoa tu");
-        System.out.println("3.sua tu");
-        int ba=input.nextInt();
-        switch(ba)
-        {
-            case 1:
-            {
-                dm.dictionaryadd(d);
-                dm.dictionaryExportToFile(d);
-                break;
-            }
-            case 2:
-            {
-                dm.dictionarydelete(d);
-                dm.dictionaryExportToFile(d);
-                break;
-            }
-            case 3:
-            {
-                dm.dictionaryrepair(d);
-                dm.dictionaryExportToFile(d);
-                break;
-            }
+          
+            case 3: {
+                    System.out.println("1.them tu");
+                    System.out.println("2.xua tu");
+                    System.out.println("3.xoa tu");
+                    System.out.println("4.thoat ");
+                    System.out.print("ban dinh sua tu dien : " );
+                    
+                    int m = input.nextInt();
+                    while (!(m >= 1 && m <= 4)) 
+                    {
+                    System.out.print("Nhap sai, xin nhap lai : ");
+                        m =input.nextInt();
+                    }
+                    switch (m) {
+                        case 1: {
+                         dm.dictionaryadd(d);
+                         dm.dictionaryExportToFile(d);
+                         break;
+                        }
+                        case 2: 
+                        {
+                         dm.dictionaryrepair(d);
+                          dm.dictionaryExportToFile(d);
+                            break;
+                        }
+                        case 3: 
+                        {
+                            dm.dictionarydelete(d);
+                            dm.dictionaryExportToFile(d);
+                            break;
+                        }
+                        case 4: 
+                        {
+                            break;
+                        }
+                    }
+                    break;
+                }
         }
         
         
@@ -90,13 +105,7 @@ public class Main {
         
         
         
-        
-        break;
-        
-           }
-           
-               
-           }
+      
        }while(n!=4);
                
         
