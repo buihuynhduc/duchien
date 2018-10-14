@@ -31,9 +31,17 @@ import java.util.Scanner;
         String s_explain =scanner.nextLine();
         Word tumoi= new Word(s_target,s_explain);
         d.list.add(tumoi);
-        
+        System.out.println("xong!!!!!!");
     
      }
+     Collections.sort(d.list, new Comparator<Word>()
+                {
+                    @Override
+                public int compare(Word word1, Word word2)
+                    {
+                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
+                   }
+               }); 
    
     
     
@@ -63,7 +71,7 @@ public void dictionaryLookup(Dictionary d)
         if(word.getwordtarget().equals(english))
         {
             System.out.println("tieng viet : "+word.getwordexplain());
-             System.out.println("tieng anh : "+word.getwordtarget());
+         
             dem++;
         }
         else
@@ -77,6 +85,126 @@ public void dictionaryLookup(Dictionary d)
     }
     
 }
+
+public void dictionaryadd(Dictionary d)
+{Scanner input=new Scanner(System.in);
+
+    System.out.print("nhap tu tieng anh ban muon them : ");
+    String wordtarget=input.next();
+    System.out.print("nhap tu tieng viet ban muon them : ");
+    String wordexplain=input.next();
+    Word word=new Word(wordtarget,wordexplain);
+    d.list.add(word);
+    System.out.println("da them tu moi!!!!");
+     Collections.sort(d.list, new Comparator<Word>()
+                {
+                    @Override
+                public int compare(Word word1, Word word2)
+                    {
+                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
+                   }
+               }); 
+    
+    
+}
+public void dictionarydelete(Dictionary d)
+{
+    System.out.print("nhap tu ban muon xoa : ");
+    Scanner input =new Scanner(System.in);
+    String english=input.next();
+     int dem=0;
+    for(Word word : d.list)
+    {
+        if(word.getwordtarget().equals(english))
+        {
+          d.list.remove(word);
+          dem++;
+            System.out.println("da xoa!!!!!");
+          break;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    if(dem==0)
+    {
+        System.err.println("khong tim thay trong tu dien");
+    }
+    
+    
+}
+public void dictionaryExportToFile(Dictionary d) throws IOException 
+{ Collections.sort(d.list, new Comparator<Word>()
+                {
+                    @Override
+                public int compare(Word word1, Word word2)
+                    {
+                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
+                   }}); 
+   
+    try{
+         FileWriter file =new FileWriter("dictionaries.txt");
+        for(Word word :d.list)
+        {
+         file.write(word.getwordtarget()+" "+word.getwordexplain()+"\r\n");
+        }
+        file.close();
+    }
+    catch(Exception e)
+            {
+                System.err.print(e);
+            }
+   
+    
+}
+ public int binarySearch(Dictionary d,String input) {
+        int vitri=-1;
+     int cuoi= d.list.size()-1;
+        int dau=0;
+        
+       
+        if (d.list.get(cuoi).getwordtarget().startsWith(input))
+        {
+            vitri=cuoi;
+        } else 
+            if(d.list.get(dau).getwordtarget().startsWith(input)) 
+            {
+            vitri = dau;
+            } else {
+
+            while (dau <cuoi)
+            {
+                int n = (int) (cuoi+ dau) / 2;
+                if (d.list.get(n).getwordtarget().startsWith(input))
+                {
+                    vitri =n;
+                    break;
+                } 
+                else if (n == dau && dau + 1 ==cuoi) 
+                {
+                    return -1;
+                }
+                else if (d.list.get(n).getwordtarget().compareTo(input) > 0) 
+                {
+                    cuoi= n; 
+                }
+                else
+                {
+                    dau=n;
+                }
+            }
+            while (vitri>=1 && d.list.get(vitri-1).getwordtarget().startsWith(input)) 
+            
+            {
+                vitri--;
+            }
+        }
+               return vitri;
+
+    }
+
+
 public void dictionaryrepair(Dictionary d)
 {
     System.out.print("nhap tu ban muon sua : ");
@@ -107,7 +235,7 @@ public void dictionaryrepair(Dictionary d)
     String wordexplain=input.next();
     Word word=new Word(wordtarget,wordexplain);
     d.list.add(word);
-        System.out.println("da sua");
+        System.out.println("da sua!!!!");
         
     }
     Collections.sort(d.list, new Comparator<Word>()
@@ -129,79 +257,9 @@ public void dictionaryrepair(Dictionary d)
     
     
 }
-public void dictionaryadd(Dictionary d)
-{Scanner input=new Scanner(System.in);
+}
 
-    System.out.print("nhap tu tieng anh ban muon them : ");
-    String wordtarget=input.next();
-    System.out.print("nhap tu tieng viet ban muon them : ");
-    String wordexplain=input.next();
-    Word word=new Word(wordtarget,wordexplain);
-    d.list.add(word);
-    System.out.println("da them tu moi");
-     Collections.sort(d.list, new Comparator<Word>()
-                {
-                    @Override
-                public int compare(Word word1, Word word2)
-                    {
-                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
-                   }
-               }); 
-    
-    
-}
-public void dictionaryDelete(Dictionary d)
-{
-    System.out.print("nhap tu ban muon xoa : ");
-    Scanner input =new Scanner(System.in);
-    String english=input.next();
-     int dem=0;
-    for(Word word : d.list)
-    {
-        if(word.getwordtarget().equals(english))
-        {
-          d.list.remove(word);
-          dem++;
-          break;
-        }
-        else
-        {
-            continue;
-        }
-    }
-    if(dem==0)
-    {
-        System.err.println("khong tim thay trong tu dien");
-    }
-    
-    
-}
-public void dictionaryExportToFile(Dictionary d) throws IOException 
-{ Collections.sort(d.list, new Comparator<Word>()
-                {
-                    @Override
-                public int compare(Word word1, Word word2)
-                    {
-                 return (word1.getwordtarget().compareTo(word2.getwordtarget()));
-                   }
-               }); 
-   
-    try{
-         FileWriter file =new FileWriter("dictionaries.txt");
-        for(Word word : d.list)
-        {
-            file.write(word.getwordtarget()+" "+word.getwordexplain()+"\r\n");
-        }
-        file.close();
-    }
-    catch(Exception e)
-            {
-                System.err.print(e);
-            }
-   
-    
-}
- }
+ 
 
 
     
