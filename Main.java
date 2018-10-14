@@ -31,9 +31,11 @@ public class Main {
         System.out.println("1.tra cuu tu");
         System.out.println("2.tra cuu theo goi y");
         System.out.println("3.them sua xoa cac tu");
+        System.out.println("4.them tu so luong tuy chon");
 
-
-        System.out.println("4.thoat");
+        System.out.println("5.thoat");
+      
+       
     Scanner input=new Scanner(System.in);
          int n;
          String key;
@@ -41,7 +43,7 @@ public class Main {
      {System.out.print("nhap lua chon cua ban : ");
      
           n=input.nextInt();
-       while(!(n<=4)&&(n>=1))
+       while(!(n<=5)&&(n>=1))
        {
            System.err.print("xin vui long nhap lai lua chon cua ban : ");
            n=input.nextInt();
@@ -55,18 +57,18 @@ public class Main {
            }
            case 2:
            {
-               System.err.print("chua nang cap");
-               
-               break;
+              dc.dictionarySearcher(d);
+              break;
+              
            }
           
             case 3: {
                     System.out.println("1.them tu");
-                    System.out.println("2.xua tu");
+                    System.out.println("2.sua tu");
                     System.out.println("3.xoa tu");
                     System.out.println("4.thoat ");
                     System.out.print("ban dinh sua tu dien : " );
-                    
+                  
                     int m = input.nextInt();
                     while (!(m >= 1 && m <= 4)) 
                     {
@@ -98,6 +100,13 @@ public class Main {
                     }
                     break;
                 }
+            case 4:
+                
+            {
+                dm.insertFromCommandline(d);
+                dm.dictionaryExportToFile(d);
+            }
+            
         }
         
         
@@ -106,7 +115,7 @@ public class Main {
         
         
       
-       }while(n!=4);
+       }while(n!=5);
                
         
    
