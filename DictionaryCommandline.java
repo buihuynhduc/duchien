@@ -6,6 +6,8 @@
 package btl;
 
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
 
 
 public class DictionaryCommandline {
@@ -36,12 +38,41 @@ public class DictionaryCommandline {
     dm.dictionaryLookup(word);
         showAllWords(word);
    }
+  public void dictionarySearcher(Dictionary d) {
+     
+        System.out.print("Nhap tu can tra theo goi y : ");
+        Scanner input = new Scanner(System.in);
+        String word = input.nextLine();
+           
+        DictionaryManagement dm = new DictionaryManagement();
+        int vitri= dm.binarySearch(d,word);
+          System.out.printf("%-5s|%-20s|%-20s","No","English","Vietnamese");
+          System.out.println("");
+        if (vitri!= -1) {
+            while (d.list.get(vitri).getwordtarget().startsWith(word)) {
+                System.out.printf("%-5s|%-20s|%-20s", vitri,d.list.get(vitri).getwordtarget(),d.list.get(vitri).getwordexplain());
+                System.out.println("");
+                if (vitri<d.list.size()-1)
+                {vitri++;
+                } 
+                else 
+                {
+                break;
+                }
+                }
+                        } 
+        if(vitri==-1)
+        {
+            System.err.print("khong the tra ra!!!!!!!!!");
+        }
+    }
+ }
     
    
    
 
 
-    }
+    
     
 
     
