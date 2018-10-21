@@ -33,10 +33,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- *
- * @author DUC KHIEM
- */
+
 public class Controller1 implements Initializable {
 
     protected static DataBase data;
