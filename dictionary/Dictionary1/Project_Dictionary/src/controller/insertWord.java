@@ -11,11 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author DUC KHIEM
- */
 public class insertWord implements Initializable {
 
     @FXML
