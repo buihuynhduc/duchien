@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dictionary;
 
 import java.io.BufferedReader;
@@ -12,10 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-/**
- *
- * @author DUC KHIEM
- */
+
 public class TranslateAPI {
     public static String translate(String langFrom, String langTo, String text) throws IOException {
         // INSERT YOU URL HERE
