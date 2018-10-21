@@ -70,7 +70,6 @@ public class Controller1 implements Initializable {
     public Controller1() {
         data = new DataBase();
         dic = data.getDataBase();
-        KeyWord = dic.WordRandom();
     }
 
     @FXML
@@ -186,19 +185,9 @@ public class Controller1 implements Initializable {
                 alert2.show();
             }
         });
-        list.remove(deleteWord.getText());
+        list.remove(deleteWord.getText())
     }
-
-    /**
-     * show randomWord
-     *
-     * @param event
-     */
-    @FXML
-    private void showWordRandom(MouseEvent event) {
-        webengine1.loadContent(dic.getMap().get(KeyWord));
-    }
-
+   
     @FXML
     private void add(ActionEvent event) throws IOException {
         Stage stage = new Stage();
