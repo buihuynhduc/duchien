@@ -16,10 +16,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
-/**
- *
- * @author DUC KHIEM
- */
+
 public class Dictionary {
 
     private String path; //path đọc file
