@@ -12,7 +12,6 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -156,17 +155,6 @@ public class Dictionary {
             html = "<html>this word didn't exist in dictionary</html>";
         }
         return html;
-    }
-
-    /**
-     * random từ để hiển thị trên webview khi run
-     *
-     * @return từ random
-     */
-    public String WordRandom() {
-        Random random = new Random();
-        int index = random.nextInt(key.size() - 1);
-        return key.get(index);
     }
 
     /**
