@@ -2,10 +2,6 @@ package dictionary;
 
 import java.util.Collections;
 
-/**
- *
- * @author DUC KHIEM
- */
 public class DataBase {
     Dictionary dic = new Dictionary();
     String nameFile;
